@@ -1,0 +1,7 @@
+<div style="margin-left: 279px;">
+  <h2>User1</h2>
+  <ul>
+      <li *ngFor="let receivedMessage of receivedMessages1">{{ receivedMessage }}</li>
+    </ul>
+  <input [(ngModel)]="message1" (keyup.enter)="sendMessage1()" placeholder="Enter your message">
+</div>

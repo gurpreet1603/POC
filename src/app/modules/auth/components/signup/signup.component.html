@@ -1,0 +1,31 @@
+<div class="container-fluid p-0">
+  <div class="main-outer ">
+    <div class="form-bg-box">
+      <div class="logo-bg-box">
+      </div>
+      <form [formGroup]="SignupForm" (ngSubmit)="OnSubmit();$event.stopPropagation();$event.preventDefault();">
+          <div class="login-bg-box">
+            <p class="login-text-value">
+                Sign-Up
+            </p>
+            <div class="form-group">
+                <input formControlName="firstname" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="FirstName">
+                <input formControlName="lastname" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="LastName">
+                <input formControlName="username" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="UserName">
+                <input  type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" class="form-control email-btn pass-btn" id="exampleInputPassword1" placeholder="Password">
+
+              </div>
+              <a href="/login">login</a>
+
+              <button [ngClass]="loadingNext ? 'loadingClass' : ''" type="submit"  class="btn submit-btn-value w-100 ">
+                <span *ngIf="!loadingNext">Sign Up</span>
+
+                <img alt="" src="../../assets/images/arrow-right-svgrepo-com (2) 1.png">
+
+              </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
