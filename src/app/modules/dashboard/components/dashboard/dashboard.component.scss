@@ -394,3 +394,12 @@
 .content-area::-webkit-scrollbar-thumb:hover {
   background: var(--bg-color);
 }
+
+.searchtext{
+    font-family: "Karla", sans-serif;
+    outline: 0;
+    padding: 0 12px;
+    height: 40px;
+    width: 250px;
+    font-size: 1em;
+}

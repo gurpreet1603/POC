@@ -6,23 +6,43 @@
       <form [formGroup]="SignupForm" (ngSubmit)="OnSubmit();$event.stopPropagation();$event.preventDefault();">
           <div class="login-bg-box">
             <p class="login-text-value">
-                Sign-Up
+                Sign Up
             </p>
             <div class="form-group">
                 <input formControlName="firstname" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="FirstName">
+                <br>
+                <mat-error class="mat-error"  *ngIf="(SignupForm.controls['firstname'].touched || submitted) &&
+                SignupForm.controls['firstname'].errors && SignupForm.controls['firstname'].errors?.['required']">*This Field is Required</mat-error>
+
                 <input formControlName="lastname" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="LastName">
+                <mat-error class="mat-error"  *ngIf="(SignupForm.controls['lastname'].touched || submitted) &&
+                SignupForm.controls['lastname'].errors && SignupForm.controls['lastname'].errors?.['required']">*This Field is Required</mat-error>
+
                 <input formControlName="username" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="UserName">
-                <input  type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" class="form-control email-btn pass-btn" id="exampleInputPassword1" placeholder="Password">
+                <mat-error class="mat-error"  *ngIf="(SignupForm.controls['username'].touched || submitted) &&
+                SignupForm.controls['username'].errors && SignupForm.controls['username'].errors?.['required']">*This Field is Required</mat-error>
+
+                <input style="width:358px" type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" class="form-control email-btn pass-btn" id="exampleInputPassword1" placeholder="Password">
+                <mat-error class="mat-error"  *ngIf="(SignupForm.controls['password'].touched || submitted) &&
+                SignupForm.controls['password'].errors && SignupForm.controls['password'].errors?.['required']">*This Field is Required</mat-error>
+
 
               </div>
-              <a href="/login">login</a>
 
-              <button [ngClass]="loadingNext ? 'loadingClass' : ''" type="submit"  class="btn submit-btn-value w-100 ">
-                <span *ngIf="!loadingNext">Sign Up</span>
+              <button type="submit" style="background-color: #4CAF50; /* Green background color */
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              font-size: 16px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+              transition: background-color 0.3s; "
+>
+Sign Up
+</button>
+<a style="margin-left:20px" href="/login">Already Account? login</a>
 
-                <img alt="" src="../../assets/images/arrow-right-svgrepo-com (2) 1.png">
-
-              </button>
         </div>
       </form>
     </div>

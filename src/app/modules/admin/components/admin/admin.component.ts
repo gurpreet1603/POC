@@ -2,29 +2,22 @@ import { Component } from '@angular/core';
 import { Router,NavigationStart, Event as NavigationEvent } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class HeaderComponent {
-  event$;
+export class AdminComponent {
+  event$
   even: any;
-  constructor(private router:Router){
-
+  constructor(public router : Router){
     this.event$
     =this.router.events
         .subscribe(
           (event: NavigationEvent) => {
             if(event instanceof NavigationStart) {
             this.even =   event.url;
-            console.log(this.even,'sdsd7')
             }
           });
-  }
-  Logout(){
-     localStorage.removeItem('userDetails')
-    this.router.navigate(['/login']);
-
   }
 
 }

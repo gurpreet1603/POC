@@ -1,7 +1,17 @@
-<div style="margin-left: 279px;">
-  <h2>User1</h2>
-  <ul>
-      <li *ngFor="let receivedMessage of receivedMessages1">{{ receivedMessage }}</li>
-    </ul>
-  <input [(ngModel)]="message1" (keyup.enter)="sendMessage1()" placeholder="Enter your message">
+
+<div class="chat-box" style="margin-left: 181px">
+  <header>
+    <h1>Aayush</h1>
+    <span style="flex:1"></span>
+    <span class="close-button">X</span>
+  </header>
+  <section id="message-list">
+    <div *ngFor="let receivedMessage of receivedMessages1" class="not-me">
+      <span>{{ receivedMessage }}</span>
+    </div>
+     </section>
+  <footer>
+    <input [(ngModel)]="message1" (keyup.enter)="sendMessage1()" id="message-input" type="text" placeholder="Type a message...">
+
+  </footer>
 </div>

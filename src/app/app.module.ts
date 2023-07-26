@@ -3,13 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastComponent } from './shared/toast/toast.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonFileModule } from './modules/commonModule/common-module';
 import { AuthguardServiceService } from './service/authguard-service.service';
-import { HttpClientInterceptor } from './interceptors/http-client.interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { HeaderComponent } from './modules/commonModule/components/header/header.component';
+import { AppStateModule } from './app-state/app-state.module';
+import { HttpClientInterceptor } from './interceptors/http-client.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,8 @@ import { HeaderComponent } from './modules/commonModule/components/header/header
     MatInputModule,
     MatExpansionModule,
     CommonFileModule,
+    AppStateModule,
+    HttpClientModule
 
 
 
@@ -57,8 +60,7 @@ import { HeaderComponent } from './modules/commonModule/components/header/header
     useClass: HttpClientInterceptor,
     multi: true
   },
-
-],  bootstrap: [AppComponent],
+], bootstrap: [AppComponent],
 exports:[SidemenuComponent,HeaderComponent]
 })
 export class AppModule { }

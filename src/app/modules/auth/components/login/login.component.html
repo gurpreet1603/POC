@@ -15,22 +15,34 @@
                     <div class="eyeicon-box">
                       <img alt="" class="eye-icon" src="../../assets/img/{{showPassword ? 'Show' : 'Show_Hide'}}.svg"
                       (click)="showPassword = !showPassword" alt="show-hide" />
+                      <mat-error class="mat-error"  *ngIf="(loginForm.controls['username'].touched || submitted) &&
+                loginForm.controls['username'].errors && loginForm.controls['username'].errors?.['required']">*This Field is Required</mat-error>
 
 
-                <input  type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" class="form-control email-btn pass-btn" id="exampleInputPassword1" placeholder="Password">
+                <input style="width:360px;" type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" class="form-control email-btn pass-btn" id="exampleInputPassword1" placeholder="Password">
+                <mat-error class="mat-error"  *ngIf="(loginForm.controls['password'].touched || submitted) &&
+                loginForm.controls['password'].errors && loginForm.controls['password'].errors?.['required']">*This Field is Required</mat-error>
               </div>
-              <span *ngIf="message">{{message}}</span>
+              <span style="color: red;" *ngIf="message && loginForm.value.password">{{message}}</span>
 
 
               </div>
-              <a href="/sign-up">Register</a>
 
-              <button [ngClass]="loadingNext ? 'loadingClass' : ''" type="submit"  class="btn submit-btn-value w-100 ">
-                <span *ngIf="!loadingNext">Login</span>
+              <button type="submit" style="background-color: #4CAF50;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              font-size: 16px;
+              margin-top:10px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+              transition: background-color 0.3s;"
+>
+Login
+</button>
+<a style="margin-left:10px" href="/sign-up">Register</a>
 
-                <img alt="" src="../../assets/images/arrow-right-svgrepo-com (2) 1.png">
-
-              </button>
         </div>
       </form>
     </div>

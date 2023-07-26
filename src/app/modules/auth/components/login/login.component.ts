@@ -19,7 +19,6 @@ export class LoginComponent {
   message: any;
   constructor(private router :Router,){
     this.userlist = JSON.parse(this.data)
-     console.log(this.userlist,'dssdsd78')
 
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),

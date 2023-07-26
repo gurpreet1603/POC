@@ -10,6 +10,7 @@ export class SidemenuComponent {
   constructor(private router: Router,
   ){
 
+
   }
   selectedpage: string='';
 

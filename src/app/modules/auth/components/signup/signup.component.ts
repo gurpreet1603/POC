@@ -17,8 +17,11 @@ export class SignupComponent {
   userlist: any=[];
 
   constructor(private router :Router,){
-    let x :any=  localStorage.getItem('userlist');
-    this.userlist = JSON.parse(x)
+    if(localStorage.getItem('userlist')){
+
+      let x :any=  localStorage.getItem('userlist');
+      this.userlist = JSON.parse(x)
+    }
 
 
     this.SignupForm = new FormGroup({

@@ -5,28 +5,28 @@ import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { map, exhaustMap, catchError, withLatestFrom } from 'rxjs/operators';
 import * as allActions  from '../../actions';
-import { MessageService } from 'src/app/service/message-service/message.service';
+import { UserserviceService } from 'src/app/service/user-service/userservice.service';
 
 
 @Injectable()
 export class GetUsersEffects {
     constructor(
         private actions$: Actions,
-        private UserService: MessageService,
+        private UserService: UserserviceService,
         private readonly store: Store,
     ){ }
-  //   GetUsers$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(allActions.GetUsers),
-  //   exhaustMap(action =>
-  //   this.UserService.GetUsers({body:action}).pipe(
-  //   map(response =>
-  //       {
-  //     return allActions.GetUsersSuccess({response})
-  //         }),
-  //         catchError((error: any) => of(allActions.GetUsersFailure(error))))
-  //     )
-  //   )
-  // );
+    GetUsers$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(allActions.GetUsers),
+    exhaustMap(action =>
+    this.UserService.GetUsers({body:action}).pipe(
+    map(response =>
+        {
+      return allActions.GetUsersSuccess({response})
+          }),
+          catchError((error: any) => of(allActions.GetUsersFailure(error))))
+      )
+    )
+  );
 
 }

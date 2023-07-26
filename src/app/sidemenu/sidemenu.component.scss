@@ -4,6 +4,8 @@
     min-width:55px;
     position: fixed !important;
     overflow-x: hidden;
+    top:0;
+    bottom:0;
     &:hover{
       width: 250px;
       overflow: auto;
