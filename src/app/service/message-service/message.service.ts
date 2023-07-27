@@ -12,11 +12,11 @@ export class MessageService {
   message$ = this.messageSource.asObservable();
   message1$ = this.messageSource1.asObservable();
 
-  sendMessage(message: string) {
-    this.messageSource1.next(message);
+  sendMessage(message: any) {
+    this.messageSource.next(message);
   }
-  sendMessage1(message1: string) {
-    this.messageSource.next(message1);
+  sendMessage1(message1: any) {
+    this.messageSource1.next(message1);
   }
   GetUsers(data:any){
     // return this.http.get<any>(`https://reqres.in/api/users`);

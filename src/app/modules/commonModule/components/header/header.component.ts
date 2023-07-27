@@ -17,7 +17,6 @@ export class HeaderComponent {
           (event: NavigationEvent) => {
             if(event instanceof NavigationStart) {
             this.even =   event.url;
-            console.log(this.even,'sdsd7')
             }
           });
   }

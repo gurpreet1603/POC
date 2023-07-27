@@ -1,23 +1,14 @@
-<!-- <div style="margin-left: 902px;">
-  <h2>User2</h2>
-  <ul>
-    <li *ngFor="let receivedMessage of receivedMessages">{{ receivedMessage }}</li>
-  </ul>
-  <input [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Enter your message">
-
-</div> -->
-
-
-<div class="chat-box" style="margin-left: 800px; margin-top:-400px;">
+<div class="chat-box" >
   <header>
     <h1>Kapil</h1>
     <span style="flex:1"></span>
     <span class="close-button">X</span>
   </header>
   <section id="message-list">
-    <div *ngFor="let receivedMessage of receivedMessages" class="me">
-      <span>{{ receivedMessage }}</span>
+    <div *ngFor="let receivedMessage of mergedMessages" [ngClass]="receivedMessage.name=='kapil' ? 'not-me' : 'me'">
+      <span>{{ receivedMessage.message }}</span>
     </div>
+
      </section>
   <footer>
     <input [(ngModel)]="message" (keyup.enter)="sendMessage()" id="message-input" type="text" placeholder="Type a message...">

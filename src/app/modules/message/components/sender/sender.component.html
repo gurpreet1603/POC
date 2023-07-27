@@ -6,9 +6,10 @@
     <span class="close-button">X</span>
   </header>
   <section id="message-list">
-    <div *ngFor="let receivedMessage of receivedMessages1" class="not-me">
-      <span>{{ receivedMessage }}</span>
+    <div *ngFor="let receivedMessage of mergedMessages" [ngClass]="receivedMessage.name == 'Aayush' ? 'not-me' : 'me'">
+      <span>{{ receivedMessage.message }}</span>
     </div>
+
      </section>
   <footer>
     <input [(ngModel)]="message1" (keyup.enter)="sendMessage1()" id="message-input" type="text" placeholder="Type a message...">

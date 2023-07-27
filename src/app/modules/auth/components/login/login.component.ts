@@ -26,19 +26,27 @@ export class LoginComponent {
     });
   }
   OnSubmit() {
+    this.message= ''
     this.submitted =true
     if (this.loginForm.valid) {
       this.loadingNext = true;
-      this.userlist.map((el:any)=>{
-        if(el.username == this.loginForm.value.username && el.password == this.loginForm.value.password){
-          this.message =false;
-          localStorage.setItem('userDetails','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9')
-          this.router.navigate(['/dashboard']);
+      if(this.userlist?.length){
 
-        }else{
-          this.message = 'Invalid Username or Password'
-        }
-      })
+        this.userlist.map((el:any)=>{
+          if(el.username == this.loginForm.value.username && el.password == this.loginForm.value.password){
+            this.message =false;
+            localStorage.setItem('userDetails','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9')
+            this.router.navigate(['/dashboard']);
+
+          }else{
+            this.message = 'Invalid Username or Password'
+          }
+        })
+      }else{
+        this.message = 'User Does not Exist!'
+
+
+      }
 
 
 
