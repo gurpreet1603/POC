@@ -1,7 +1,7 @@
 <div class="header">
   <div class="header-right">
-    <a [ngClass]="even == '/dashboard' ? 'active' : '' " href="/dashboard">Dashboard</a>
-    <a  [ngClass]="even == '/messages' ? 'active' : '' " href="/messages">Message</a>
+    <a [ngClass]="even == '/dashboard' ? 'active' : '' " routerLink="/dashboard">Dashboard</a>
+    <a  [ngClass]="even == '/messages' ? 'active' : '' " routerLink="/messages">Message</a>
     <a (click)="Logout()">Logout</a>
   </div>
 </div>
