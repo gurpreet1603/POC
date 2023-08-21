@@ -9,14 +9,11 @@
                 Sign Up
             </p>
             <div class="form-group">
-                <input formControlName="firstname" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="FirstName">
+                <input formControlName="email" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
                 <br>
-                <mat-error class="mat-error"  *ngIf="(SignupForm.controls['firstname'].touched || submitted) &&
-                SignupForm.controls['firstname'].errors && SignupForm.controls['firstname'].errors?.['required']">*This Field is Required</mat-error>
+                <mat-error class="mat-error"  *ngIf="(SignupForm.controls['email'].touched || submitted) &&
+                SignupForm.controls['email'].errors && SignupForm.controls['email'].errors?.['required']">*This Field is Required</mat-error>
 
-                <input formControlName="lastname" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="LastName">
-                <mat-error class="mat-error"  *ngIf="(SignupForm.controls['lastname'].touched || submitted) &&
-                SignupForm.controls['lastname'].errors && SignupForm.controls['lastname'].errors?.['required']">*This Field is Required</mat-error>
 
                 <input formControlName="username" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="UserName">
                 <mat-error class="mat-error"  *ngIf="(SignupForm.controls['username'].touched || submitted) &&

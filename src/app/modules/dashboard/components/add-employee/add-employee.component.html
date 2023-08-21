@@ -1,0 +1,53 @@
+<div class="container-fluid p-0">
+  <div class="main-outer ">
+    <div class="form-bg-box">
+      <div class="logo-bg-box">
+      </div>
+      <form [formGroup]="AddEmployeeForm" (ngSubmit)="OnSubmit();$event.stopPropagation();$event.preventDefault();">
+          <div class="login-bg-box">
+            <p class="login-text-value">
+               {{data?.value =='edit' ? 'Edit Employee' : 'Add Employee'}}
+            </p>
+            <div class="form-group">
+              <input formControlName="name" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name">
+              <mat-error class="mat-error"  *ngIf="(AddEmployeeForm.controls['name'].touched || submitted) &&
+              AddEmployeeForm.controls['name'].errors && AddEmployeeForm.controls['name'].errors?.['required']">*This Field is Required</mat-error>
+
+
+                <input formControlName="email" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                <br>
+                <mat-error class="mat-error"  *ngIf="(AddEmployeeForm.controls['email'].touched || submitted) &&
+                AddEmployeeForm.controls['email'].errors && AddEmployeeForm.controls['email'].errors?.['required']">*This Field is Required</mat-error>
+
+                <input formControlName="gender" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Gender">
+                <br>
+                <mat-error class="mat-error"  *ngIf="(AddEmployeeForm.controls['gender'].touched || submitted) &&
+                AddEmployeeForm.controls['gender'].errors && AddEmployeeForm.controls['gender'].errors?.['required']">*This Field is Required</mat-error>
+
+
+                <input formControlName="bio" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="bio">
+                <br>
+                <mat-error class="mat-error"  *ngIf="(AddEmployeeForm.controls['bio'].touched || submitted) &&
+                AddEmployeeForm.controls['bio'].errors && AddEmployeeForm.controls['bio'].errors?.['required']">*This Field is Required</mat-error>
+
+                <input formControlName="city" class="form-control email-btn" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="city">
+                <br>
+                <mat-error class="mat-error"  *ngIf="(AddEmployeeForm.controls['city'].touched || submitted) &&
+                AddEmployeeForm.controls['city'].errors && AddEmployeeForm.controls['city'].errors?.['required']">*This Field is Required</mat-error>
+
+
+
+
+              </div>
+
+              <button class="btnpr" type="submit"
+>
+Submit
+</button>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

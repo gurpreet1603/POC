@@ -34,7 +34,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
           this.UserService.toast.snackbarSucces(error.error.error);
           window.localStorage.clear();
           setTimeout(() => {
-            window.location.reload();
+            // window.location.reload();
 
           }, 1000);
           this.router.navigate(['/login']);

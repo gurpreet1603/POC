@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserserviceService } from 'src/app/service/user-service/userservice.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,7 @@ export class SignupComponent {
   userdata: Object = {};
   userlist: any=[];
 
-  constructor(private router :Router,){
+  constructor(private router :Router, private UserService:UserserviceService){
     if(localStorage.getItem('userlist')){
 
       let x :any=  localStorage.getItem('userlist');
@@ -25,8 +26,7 @@ export class SignupComponent {
 
 
     this.SignupForm = new FormGroup({
-      firstname: new FormControl('', [Validators.required]),
-      lastname: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
 
@@ -34,18 +34,18 @@ export class SignupComponent {
   }
 
   OnSubmit() {
-    this.submitted =true
+      this.submitted =true
     if (this.SignupForm.valid) {
       this.loadingNext = true;
-      let Obj = {
-        firstname : this.SignupForm.value.firstname,
-        lastname : this.SignupForm.value.lastname,
-        username : this.SignupForm.value.username,
-        password : this.SignupForm.value.password,
-      }
-      this.userlist.push(Obj)
 
-      localStorage.setItem('userlist',JSON.stringify(this.userlist));
+      this.UserService.register({
+            email : this.SignupForm.value.email,
+            username : this.SignupForm.value.username,
+            password : this.SignupForm.value.password,
+
+
+    }).subscribe((item:any)=>{
+    })
       this.SignupForm.reset()
       this.router.navigate(['/'])
     }

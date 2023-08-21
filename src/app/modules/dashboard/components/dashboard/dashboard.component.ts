@@ -8,6 +8,9 @@ import * as actions from 'src/app/app-state/actions';
 import * as fromRoot from 'src/app/app-state';
 import { Subject, takeUntil } from 'rxjs';
 import { SearchPipe } from 'src/app/search.pipe';
+import { MatDialog } from '@angular/material/dialog';
+import { AddEmployeeComponent } from '../add-employee/add-employee.component';
+import { UserserviceService } from 'src/app/service/user-service/userservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,33 +30,39 @@ export class DashboardComponent {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   displayedColumns: string[] = [
     'sno',
-    'fname',
-    'lname',
+    'name',
     'email',
-    'img',
-
-
+    'gender',
+    'city',
+    'bio',
+    'action',
   ];
   dataSource = new MatTableDataSource<any>([]);
-  userlists: any;
-  constructor(private readonly store: Store,private router:Router){
+  all: any;
+  constructor(private readonly store: Store,private router:Router,
+    private dialog: MatDialog,
+    private Userser:UserserviceService){
 
 
 
+this.getemployee()
 
+
+  }
+
+  getemployee(){
     this.store.dispatch(
       actions.GetUsers({}))
      this.store
      .select(fromRoot.selectStatesGetUsersData)
      .pipe(takeUntil(this.destroy$))
      .subscribe((data: any) => {
-      this.userlists = data.data
-      this.dataSource.data = data.data
+      this.all = data
+      this.dataSource.data = data
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
 
      })
-
   }
   Logout(){
     localStorage.removeItem('userDetails')
@@ -62,4 +71,32 @@ export class DashboardComponent {
   applyFilter() {
     this.dataSource.filter = this.searchText.trim().toLowerCase();
   }
-}
+  Delete(item:any){
+    this.Userser.Delete(item._id).subscribe((val:any)=>{
+      this.Userser.toast.snackbarSucces("User Deleted Successfully!");
+
+      this.getemployee()
+
+    })
+  }
+
+
+
+  AddEdit(value:string,item:any){
+    const dialogRef = this.dialog.open(AddEmployeeComponent, {
+      width: '400px',
+      data: {value,item},
+    });
+
+    dialogRef.afterClosed().subscribe((result:any )=> {
+      if (result) {
+         this.getemployee()
+
+
+      }
+    });
+  }
+ }
+
+
+
